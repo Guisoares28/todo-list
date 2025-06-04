@@ -1,0 +1,7 @@
+Neste projeto usaremos dois conceitos e padrões de Projetos.
+- MVC (Model, View, Controller)
+- Repository Pattern
+
+Vamos utilizar o Swagger para facilitar a nossa documentação.
+
+Vamos utilizar o Lombok para ajudar a escrever menos codigo.
