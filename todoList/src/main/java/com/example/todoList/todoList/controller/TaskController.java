@@ -1,6 +1,7 @@
 package com.example.todoList.todoList.controller;
 
 import com.example.todoList.todoList.dto.TaskRequestDTO;
+import com.example.todoList.todoList.model.TaskEntity;
 import com.example.todoList.todoList.service.TaskService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -8,12 +9,10 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/task")
@@ -32,6 +31,14 @@ public class TaskController {
     public ResponseEntity<Void> createTask(@RequestBody @Valid TaskRequestDTO taskRequestDTO) {
         taskService.saveTask(taskRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<TaskEntity>> getAllTasks(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size
+    ){
+        return ResponseEntity.ok().body(taskService.getAllTasks(page,size));
     }
 
 }
