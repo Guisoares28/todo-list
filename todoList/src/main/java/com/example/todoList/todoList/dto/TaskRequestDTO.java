@@ -1,5 +1,6 @@
 package com.example.todoList.todoList.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -13,6 +14,7 @@ public record TaskRequestDTO(
 
         @NotNull(message = "final date field is not null")
         @Future(message = "The date must be in the future")
+        @JsonFormat(pattern = "dd/MM/yyyy")
         LocalDate finalDate,
 
         @NotNull(message = "current field is not null")
