@@ -5,3 +5,5 @@ Neste projeto usaremos dois conceitos e padrões de Projetos.
 Vamos utilizar o Swagger para facilitar a nossa documentação.
 
 Vamos utilizar o Lombok para ajudar a escrever menos codigo.
+
+utilizamos também o Valid para validar os dados passados nas requisições.
